@@ -1,0 +1,47 @@
+================================================================================
+BÁO CÁO KẾT QUẢ HUẤN LUYỆN & ĐÁNH GIÁ CHESS BOT ELO 1500+
+================================================================================
+Dataset: Lichess Elite Database (Tháng 08/2020)
+Tổng số thế cờ trích xuất: 956,713 vị trí
+- Tập Huấn luyện (Train Set - 90%): 860,702 samples
+- Tập Kiểm định (Val Set - 5%):     47,660 samples
+- Tập Đánh giá Độc lập (Test - 5%):  48,351 samples
+
+Kiến trúc: ChessResNet (10,323,809 tham số)
+Hàm mất mát: CrossEntropyLoss (Policy) + 0.5 * MSELoss (Value)
+Checkpoint tối ưu được lưu: best_chess_bot.pt (Val Loss: 2.7015 ở Epoch 3)
+
+--------------------------------------------------------------------------------
+1. TIẾN TRÌNH HUẤN LUYỆN QUA CÁC EPOCH (TRAINING LOGS)
+--------------------------------------------------------------------------------
+Epoch 01 | Train Loss: 3.3776 | Train Acc: 26.45% | Val Loss: 2.8475 | Val Acc: 32.65%  [Checkpoint]
+Epoch 02 | Train Loss: 2.4941 | Train Acc: 38.87% | Val Loss: 2.7061 | Val Acc: 35.17%  [Checkpoint]
+Epoch 03 | Train Loss: 2.1393 | Train Acc: 46.57% | Val Loss: 2.7015 | Val Acc: 36.29%  [BEST CHECKPOINT ⭐]
+Epoch 04 | Train Loss: 1.8343 | Train Acc: 54.05% | Val Loss: 2.8218 | Val Acc: 36.47%
+Epoch 05 | Train Loss: 1.5553 | Train Acc: 61.31% | Val Loss: 2.9844 | Val Acc: 36.56%
+Epoch 06 | Train Loss: 1.3026 | Train Acc: 68.12% | Val Loss: 3.1823 | Val Acc: 36.74%
+Epoch 07 | Train Loss: 1.0977 | Train Acc: 73.98% | Val Loss: 3.3895 | Val Acc: 36.95%
+Epoch 08 | Train Loss: 0.9686 | Train Acc: 77.87% | Val Loss: 3.4894 | Val Acc: 37.03%
+
+--------------------------------------------------------------------------------
+2. KẾT QUẢ ĐÁNH GIÁ TRÊN TẬP TEST ĐỘC LẬP (48,351 THẾ CỜ CHƯA TỪNG THẤY)
+--------------------------------------------------------------------------------
+🏆 TOP-1 ACCURACY: 35.97% 
+   -> Hơn 1/3 số nước đi trùng khớp tuyệt đối 100% với nước cờ của Kiện tướng Lichess 2400+!
+
+🏆 TOP-3 ACCURACY: 61.92%
+   -> Gần 62% nước đi của GM nằm trong top 3 nước mà mạng nơ-ron đề xuất hàng đầu.
+
+🏆 TOP-5 ACCURACY: 73.69%
+   -> Gần 74% nước đi của GM nằm trong top 5 nước đề xuất hàng đầu.
+
+📉 VALUE MEAN SQUARED ERROR (MSE): 0.7821
+
+--------------------------------------------------------------------------------
+3. KẾT QUẢ THI ĐẤU THỰC CHIẾN
+--------------------------------------------------------------------------------
+Trận đấu thử nghiệm: ChessBot (Trắng) vs GreedyBot (Đen)
+Kết quả: 1-0 (Trắng Thắng)
+Thời gian kết thúc: Sau 39 nước đi
+Hình thức chiến thắng: Termination.CHECKMATE (Chiếu hết đối thủ)
+================================================================================

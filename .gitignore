@@ -1,0 +1,21 @@
+# Local Vietnamese documents (do not push to GitHub)
+local_vi/
+
+# Python cache & checkpoints
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Datasets and archives
+*.zip
+*.pgn
+*.npz
+
+# Environments and IDE
+.env
+.venv
+env/
+venv/
+.vscode/
+.idea/
